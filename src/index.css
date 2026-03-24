@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F6F6F6;
+  --w: #fff;
+  --pr: #D64045;
+  --pr-hov: #B7353A;
+  --pl: #FFEDEA;
+  --tx: #1F1F1F;
+  --su: #707070;
+  --bd: #E3E5EA;
+  --re: #B12A1B;
+  --re-bg: #FFEDEA;
+  --am: #8A6408;
+  --am-bg: #FFF3DF;
+  --gr: #1F6F4E;
+  --gr-bg: #E8F6EF;
+  --info: #1A5FA5;
+  --info-bg: #EAF3FF;
+  --accent: #EEF7F8;
+  --dis: #B0B0B0;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--tx);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Scrollbar hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* App shell */
+.app-shell {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Page content area with bottom nav space */
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+/* Card */
+.card {
+  background: var(--w);
+  border-radius: 14px;
+  border: 1px solid var(--bd);
+}
+
+/* Pill / chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Input */
+.input-base {
+  width: 100%;
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--tx);
+  background: var(--w);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-base:focus {
+  border-color: var(--pr);
+}
+.input-base::placeholder {
+  color: var(--dis);
+}
+
+/* Bottom sheet modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-sheet {
+  width: 100%;
+  max-width: 430px;
+  background: var(--w);
+  border-radius: 20px 20px 0 0;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 0 0 env(safe-area-inset-bottom, 0);
+}
+
+/* Tab bar active underline */
+.tab-active {
+  border-bottom: 2px solid var(--pr);
+  color: var(--pr);
+}
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: var(--w);
+  border-top: 1px solid var(--bd);
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Animate slide up */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slide-up {
+  animation: slideUp 0.25s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
