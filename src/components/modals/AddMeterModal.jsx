@@ -56,8 +56,8 @@ export default function AddMeterModal({ open, onClose, onConfirm, lastReading })
       {/* Water */}
       <div className="bg-[#EEF7F8] rounded-xl p-3 mb-3">
         <div className="flex items-center gap-2 mb-2">
-          <div className="w-7 h-7 rounded-lg bg-[#EAF3FF] flex items-center justify-center">
-            <Droplets size={14} className="text-[#1A5FA5]" />
+          <div className="w-7 h-7 rounded-lg bg-[#E8F0FF] flex items-center justify-center">
+            <Droplets size={14} className="text-[#1E40AF]" />
           </div>
           <span className="text-[13px] font-bold text-[#1F1F1F]">Water (m³)</span>
         </div>
@@ -82,7 +82,7 @@ export default function AddMeterModal({ open, onClose, onConfirm, lastReading })
           </div>
           <div className="flex-1">
             <label className="text-[11px] font-semibold text-[#707070] mb-1 block">Usage</label>
-            <div className="input-base bg-[#FFEDEA] text-[#D64045] font-bold">
+            <div className="input-base bg-[#E8F0FF] text-[#2563EB] font-bold">
               +{Math.max(0, (parseFloat(waterCurrent) || 0) - waterPrev)}
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function AddMeterModal({ open, onClose, onConfirm, lastReading })
           </div>
           <div className="flex-1">
             <label className="text-[11px] font-semibold text-[#707070] mb-1 block">Usage</label>
-            <div className="input-base bg-[#FFEDEA] text-[#D64045] font-bold">
+            <div className="input-base bg-[#E8F0FF] text-[#2563EB] font-bold">
               +{Math.max(0, (parseFloat(elecCurrent) || 0) - elecPrev)}
             </div>
           </div>

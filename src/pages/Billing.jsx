@@ -79,14 +79,14 @@ export default function Billing() {
             onClick={() => setFilterOpen(v => !v)}
             className={`mt-1 flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-[1.5px] text-[12px] font-semibold transition-colors ${
               hasDateFilter
-                ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]'
+                ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]'
                 : 'border-[#E3E5EA] bg-white text-[#707070]'
             }`}
           >
             <SlidersHorizontal size={13} />
             Filter
             {hasDateFilter && (
-              <span className="w-4 h-4 bg-[#D64045] text-white rounded-full text-[9px] font-bold flex items-center justify-center">1</span>
+              <span className="w-4 h-4 bg-[#2563EB] text-white rounded-full text-[9px] font-bold flex items-center justify-center">1</span>
             )}
           </button>
         </div>
@@ -98,7 +98,7 @@ export default function Billing() {
               <div className="flex items-center justify-between mb-0.5">
                 <span className="text-[11px] font-bold text-[#707070] uppercase tracking-wide">Filter by Period</span>
                 {hasDateFilter && (
-                  <button onClick={clearDates} className="flex items-center gap-1 text-[11px] font-semibold text-[#D64045]">
+                  <button onClick={clearDates} className="flex items-center gap-1 text-[11px] font-semibold text-[#2563EB]">
                     <X size={11} /> Clear
                   </button>
                 )}
@@ -110,7 +110,7 @@ export default function Billing() {
                     type="date"
                     value={dateFrom}
                     onChange={e => setDateFrom(e.target.value)}
-                    className="w-full px-2.5 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[12px] bg-white outline-none focus:border-[#D64045]"
+                    className="w-full px-2.5 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[12px] bg-white outline-none focus:border-[#2563EB]"
                   />
                 </div>
                 <div className="flex-1">
@@ -119,7 +119,7 @@ export default function Billing() {
                     type="date"
                     value={dateTo}
                     onChange={e => setDateTo(e.target.value)}
-                    className="w-full px-2.5 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[12px] bg-white outline-none focus:border-[#D64045]"
+                    className="w-full px-2.5 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[12px] bg-white outline-none focus:border-[#2563EB]"
                   />
                 </div>
               </div>
@@ -142,12 +142,12 @@ export default function Billing() {
               onClick={() => setActiveTab(tab.key)}
               className={`flex-shrink-0 px-3 py-2.5 text-[12px] font-bold border-b-2 -mb-px transition-colors ${
                 activeTab === tab.key
-                  ? 'text-[#D64045] border-[#D64045]'
+                  ? 'text-[#2563EB] border-[#2563EB]'
                   : 'text-[#707070] border-transparent'
               }`}
             >
               {tab.label}
-              <span className={`ml-1.5 text-[11px] ${activeTab === tab.key ? 'text-[#D64045]' : 'text-[#B0B0B0]'}`}>
+              <span className={`ml-1.5 text-[11px] ${activeTab === tab.key ? 'text-[#2563EB]' : 'text-[#B0B0B0]'}`}>
                 {counts[tab.key]}
               </span>
             </button>

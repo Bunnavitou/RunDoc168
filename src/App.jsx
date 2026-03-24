@@ -15,6 +15,7 @@ import InvoiceSetup from './pages/InvoiceSetup'
 import SubUsers from './pages/SubUsers'
 import Notifications from './pages/Notifications'
 import Profile from './pages/Profile'
+import TermsAndConditions from './pages/TermsAndConditions'
 
 export default function App() {
   const isLoggedIn = useStore(s => s.isLoggedIn)
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/sub-users" element={<SubUsers />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

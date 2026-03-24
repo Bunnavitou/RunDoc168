@@ -18,7 +18,7 @@ export default function BottomNav() {
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-4 py-1.5 cursor-pointer ${isActive ? 'text-[#D64045]' : 'text-[#707070]'}`
+              `flex flex-col items-center gap-0.5 px-4 py-1.5 cursor-pointer ${isActive ? 'text-[#2563EB]' : 'text-[#707070]'}`
             }
           >
             {({ isActive }) => (

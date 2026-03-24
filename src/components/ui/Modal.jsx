@@ -54,7 +54,7 @@ export function ConfirmModal({ open, onClose, onConfirm, title, message, confirm
   if (!open) return null
   const btnStyle = confirmVariant === 'danger'
     ? 'bg-[#FFEDEA] text-[#B12A1B]'
-    : 'bg-[#D64045] text-white'
+    : 'bg-[#2563EB] text-white'
 
   return (
     <Modal open={open} onClose={onClose} title={title}>

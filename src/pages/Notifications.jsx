@@ -10,14 +10,14 @@ import {
 // ── Notification type config ──────────────────────────────────────────────────
 const TYPE_CONFIG = {
   invoice_paid:      { icon: CheckCircle2, iconBg: 'bg-[#E8F6EF]', iconColor: 'text-[#1F6F4E]', dot: 'bg-[#22C55E]' },
-  invoice_overdue:   { icon: AlertCircle,  iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#D64045]' },
-  invoice_cancelled: { icon: XCircle,      iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#D64045]' },
-  bill_started:      { icon: FileText,     iconBg: 'bg-[#EAF3FF]', iconColor: 'text-[#1A5FA5]', dot: 'bg-[#1A5FA5]' },
-  meter_recorded:    { icon: Droplets,     iconBg: 'bg-[#EAF3FF]', iconColor: 'text-[#1A7ACC]', dot: 'bg-[#1A7ACC]' },
+  invoice_overdue:   { icon: AlertCircle,  iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#2563EB]' },
+  invoice_cancelled: { icon: XCircle,      iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#2563EB]' },
+  bill_started:      { icon: FileText,     iconBg: 'bg-[#E8F0FF]', iconColor: 'text-[#1E40AF]', dot: 'bg-[#1E40AF]' },
+  meter_recorded:    { icon: Droplets,     iconBg: 'bg-[#E8F0FF]', iconColor: 'text-[#1E40AF]', dot: 'bg-[#1E40AF]' },
   sub_user_added:    { icon: UserPlus,     iconBg: 'bg-[#F3EEFF]', iconColor: 'text-[#6B3FA0]', dot: 'bg-[#6B3FA0]' },
   service_added:     { icon: Plus,         iconBg: 'bg-[#E8F6EF]', iconColor: 'text-[#1F6F4E]', dot: 'bg-[#22C55E]' },
   service_edited:    { icon: Edit2,        iconBg: 'bg-[#FFF3DF]', iconColor: 'text-[#8A6408]', dot: 'bg-[#F59E0B]' },
-  service_deleted:   { icon: Trash2,       iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#D64045]' },
+  service_deleted:   { icon: Trash2,       iconBg: 'bg-[#FFEDEA]', iconColor: 'text-[#B12A1B]', dot: 'bg-[#2563EB]' },
 }
 
 function getConfig(type) {
@@ -85,7 +85,7 @@ export default function Notifications() {
           unreadCount > 0 ? (
             <button
               onClick={markAllNotificationsRead}
-              className="text-[12px] font-semibold text-[#D64045]"
+              className="text-[12px] font-semibold text-[#2563EB]"
             >
               Mark all read
             </button>

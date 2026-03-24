@@ -22,7 +22,7 @@ export default function MarkPaidModal({ open, onClose, onConfirm }) {
           onClick={() => setMethod('Cash')}
           className={`flex-1 flex flex-col items-center gap-2 py-4 rounded-xl border-2 transition-colors ${
             method === 'Cash'
-              ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]'
+              ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]'
               : 'border-[#E3E5EA] bg-white text-[#707070]'
           }`}
         >
@@ -34,7 +34,7 @@ export default function MarkPaidModal({ open, onClose, onConfirm }) {
           onClick={() => setMethod('QR Transfer')}
           className={`flex-1 flex flex-col items-center gap-2 py-4 rounded-xl border-2 transition-colors ${
             method === 'QR Transfer'
-              ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]'
+              ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]'
               : 'border-[#E3E5EA] bg-white text-[#707070]'
           }`}
         >

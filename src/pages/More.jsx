@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Building2, Settings, FileText, Languages, Users, LogOut, ChevronRight, ChevronRight as Arrow } from 'lucide-react'
+import { Building2, Settings, FileText, Languages, Users, LogOut, ChevronRight, ScrollText } from 'lucide-react'
 import { useStore } from '../store'
 
 const LANGUAGES = [
@@ -16,8 +16,8 @@ export default function More() {
   const MENU = [
     {
       icon: Building2,
-      iconBg: 'bg-[#EAF3FF]',
-      iconColor: 'text-[#1A5FA5]',
+      iconBg: 'bg-[#E8F0FF]',
+      iconColor: 'text-[#1E40AF]',
       label: 'Property Management',
       sub: 'Manage buildings, floors & rooms',
       action: () => navigate('/property'),
@@ -32,8 +32,8 @@ export default function More() {
     },
     {
       icon: FileText,
-      iconBg: 'bg-[#EAF3FF]',
-      iconColor: 'text-[#1A5FA5]',
+      iconBg: 'bg-[#E8F0FF]',
+      iconColor: 'text-[#1E40AF]',
       label: 'Invoice Setup',
       sub: 'Configure header, body, footer & QR',
       action: () => navigate('/invoice-setup'),
@@ -45,6 +45,14 @@ export default function More() {
       label: 'Sub Users',
       sub: 'Manage staff and viewer accounts',
       action: () => navigate('/sub-users'),
+    },
+    {
+      icon: ScrollText,
+      iconBg: 'bg-[#F6F6F6]',
+      iconColor: 'text-[#707070]',
+      label: 'Terms & Conditions',
+      sub: 'Usage policy and legal information',
+      action: () => navigate('/terms'),
     },
   ]
 
@@ -62,7 +70,7 @@ export default function More() {
             onClick={() => navigate('/profile')}
             className="w-full bg-white rounded-xl border border-[#E3E5EA] px-4 py-3.5 flex items-center gap-3 active:opacity-80 text-left"
           >
-            <div className="w-11 h-11 rounded-full bg-[#FFEDEA] flex items-center justify-center text-[#D64045] font-bold text-[18px] flex-shrink-0 overflow-hidden flex-shrink-0">
+            <div className="w-11 h-11 rounded-full bg-[#E8F0FF] flex items-center justify-center text-[#2563EB] font-bold text-[18px] flex-shrink-0 overflow-hidden flex-shrink-0">
               {authUser.profileImage
                 ? <img src={authUser.profileImage} alt="avatar" className="w-full h-full object-cover" />
                 : authUser.name?.[0]?.toUpperCase() || '?'
@@ -99,14 +107,14 @@ export default function More() {
                 onClick={() => setLanguage(lang.code)}
                 className={`flex-1 py-2.5 rounded-xl border-[1.5px] text-center transition-colors ${
                   language === lang.code
-                    ? 'border-[#D64045] bg-[#FFEDEA]'
+                    ? 'border-[#2563EB] bg-[#E8F0FF]'
                     : 'border-[#E3E5EA] bg-[#F6F6F6]'
                 }`}
               >
-                <div className={`text-[13px] font-bold ${language === lang.code ? 'text-[#D64045]' : 'text-[#1F1F1F]'}`}>
+                <div className={`text-[13px] font-bold ${language === lang.code ? 'text-[#2563EB]' : 'text-[#1F1F1F]'}`}>
                   {lang.native}
                 </div>
-                <div className={`text-[11px] mt-0.5 ${language === lang.code ? 'text-[#D64045]' : 'text-[#707070]'}`}>
+                <div className={`text-[11px] mt-0.5 ${language === lang.code ? 'text-[#2563EB]' : 'text-[#707070]'}`}>
                   {lang.label}
                 </div>
               </button>

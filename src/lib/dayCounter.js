@@ -38,7 +38,7 @@ export function getDayRingColor(day) {
  * @returns {string} hex color
  */
 export function getDayRingHex(day) {
-  if (day >= 28) return '#D64045'   // red (primary)
+  if (day >= 28) return '#2563EB'   // blue (primary)
   if (day >= 21) return '#8A6408'   // amber
   return '#B0B0B0'                   // grey
 }

@@ -70,7 +70,7 @@ export default function AddServiceModal({ open, onClose, roomId, onSave }) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    svc.type === 'utility' ? 'bg-[#EAF3FF] text-[#1A5FA5]' : 'bg-[#F6F6F6] text-[#707070]'
+                    svc.type === 'utility' ? 'bg-[#E8F0FF] text-[#1E40AF]' : 'bg-[#F6F6F6] text-[#707070]'
                   }`}>
                     <ServiceIcon name={svc.icon} size={16} />
                   </div>

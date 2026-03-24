@@ -137,7 +137,7 @@ export default function Rooms() {
 
               {showStartBill && (
                 <button
-                  className="mt-3 w-full flex items-center justify-center gap-1.5 py-2.5 bg-[#D64045] text-white text-[13px] font-semibold rounded-[10px] active:opacity-80"
+                  className="mt-3 w-full flex items-center justify-center gap-1.5 py-2.5 bg-[#2563EB] text-white text-[13px] font-semibold rounded-[10px] active:opacity-80"
                   onClick={() => setStartBillRoomId(room.id)}
                 >
                   <Zap size={14} /> Start Bill

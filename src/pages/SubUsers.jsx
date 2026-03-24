@@ -9,7 +9,7 @@ import Button from '../components/ui/Button'
 import { Plus, Edit2, Trash2, ShieldCheck, User, Eye, EyeOff } from 'lucide-react'
 
 const ROLES = [
-  { value: 'manager', label: 'Manager',  sub: 'Full access except settings',  color: 'bg-[#EAF3FF] text-[#1A5FA5]' },
+  { value: 'manager', label: 'Manager',  sub: 'Full access except settings',  color: 'bg-[#E8F0FF] text-[#1E40AF]' },
   { value: 'staff',   label: 'Staff',    sub: 'View & record meter readings',  color: 'bg-[#E8F6EF] text-[#1F6F4E]' },
   { value: 'viewer',  label: 'Viewer',   sub: 'Read-only access',              color: 'bg-[#F6F6F6] text-[#707070]' },
 ]
@@ -102,7 +102,7 @@ export default function SubUsers() {
       <div className="page-content scrollbar-hide p-4 space-y-4" style={{ paddingBottom: '100px' }}>
 
         {/* Info note */}
-        <div className="bg-[#EAF3FF] rounded-xl px-4 py-3 text-[12px] text-[#1A5FA5]">
+        <div className="bg-[#E8F0FF] rounded-xl px-4 py-3 text-[12px] text-[#1E40AF]">
           Sub users can log in with their phone number and PIN. Permissions are based on their assigned role.
         </div>
 
@@ -156,7 +156,7 @@ export default function SubUsers() {
       {/* Floating add button */}
       <button
         onClick={openAdd}
-        className="fixed bottom-8 right-1/2 translate-x-[50px] w-14 h-14 rounded-full bg-[#D64045] text-white shadow-lg flex items-center justify-center active:opacity-80 z-40"
+        className="fixed bottom-8 right-1/2 translate-x-[50px] w-14 h-14 rounded-full bg-[#2563EB] text-white shadow-lg flex items-center justify-center active:opacity-80 z-40"
         style={{ maxWidth: 'calc(215px)' }}
       >
         <Plus size={24} />
@@ -175,16 +175,16 @@ export default function SubUsers() {
                 onClick={() => set('role', r.value)}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl border-[1.5px] transition-colors ${
                   form.role === r.value
-                    ? 'border-[#D64045] bg-[#FFEDEA]'
+                    ? 'border-[#2563EB] bg-[#E8F0FF]'
                     : 'border-[#E3E5EA] bg-white'
                 }`}
               >
                 <div className="text-left">
-                  <div className={`text-[13px] font-bold ${form.role === r.value ? 'text-[#D64045]' : 'text-[#1F1F1F]'}`}>{r.label}</div>
+                  <div className={`text-[13px] font-bold ${form.role === r.value ? 'text-[#2563EB]' : 'text-[#1F1F1F]'}`}>{r.label}</div>
                   <div className="text-[11px] text-[#707070]">{r.sub}</div>
                 </div>
                 {form.role === r.value && (
-                  <ShieldCheck size={16} className="text-[#D64045] flex-shrink-0" />
+                  <ShieldCheck size={16} className="text-[#2563EB] flex-shrink-0" />
                 )}
               </button>
             ))}
@@ -216,7 +216,7 @@ export default function SubUsers() {
               placeholder="Min. 4 characters"
               value={form.password}
               onChange={e => set('password', e.target.value)}
-              className={`w-full px-3 py-2.5 pr-10 rounded-xl border-[1.5px] text-[14px] outline-none bg-white focus:border-[#D64045] ${errors.password ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
+              className={`w-full px-3 py-2.5 pr-10 rounded-xl border-[1.5px] text-[14px] outline-none bg-white focus:border-[#2563EB] ${errors.password ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
             />
             <button
               type="button"
@@ -238,7 +238,7 @@ export default function SubUsers() {
             </div>
             <button
               onClick={() => set('status', form.status === 'active' ? 'inactive' : 'active')}
-              className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 ${form.status === 'active' ? 'bg-[#D64045]' : 'bg-[#D1D5DB]'}`}
+              className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 ${form.status === 'active' ? 'bg-[#2563EB]' : 'bg-[#D1D5DB]'}`}
             >
               <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${form.status === 'active' ? 'translate-x-5' : 'translate-x-0'}`} />
             </button>

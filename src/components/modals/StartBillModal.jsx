@@ -35,7 +35,7 @@ function BliInput({ value, onChange, style = {} }) {
       type="number"
       value={value}
       onChange={e => onChange(e.target.value)}
-      className="w-[88px] px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none text-[#1F1F1F] bg-white focus:border-[#D64045]"
+      className="w-[88px] px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none text-[#1F1F1F] bg-white focus:border-[#2563EB]"
       style={style}
     />
   )
@@ -49,7 +49,7 @@ function RateInput({ value, onChange }) {
       step="0.01"
       value={value}
       onChange={e => onChange(e.target.value)}
-      className="w-[46px] border-[1.5px] border-[#E3E5EA] rounded-md px-1 py-0.5 text-[11px] font-bold outline-none bg-white focus:border-[#D64045] text-right"
+      className="w-[46px] border-[1.5px] border-[#E3E5EA] rounded-md px-1 py-0.5 text-[11px] font-bold outline-none bg-white focus:border-[#2563EB] text-right"
     />
   )
 }
@@ -304,7 +304,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
         </div>
       </div>
       {/* Pink info bar */}
-      <div className="bg-[#FFEDEA] border border-[#FFEDEA] rounded-lg px-3 py-2 mb-3 text-[12px] font-bold text-[#D64045]">
+      <div className="bg-[#E8F0FF] border border-[#E8F0FF] rounded-lg px-3 py-2 mb-3 text-[12px] font-bold text-[#2563EB]">
         <span>{billDays} days selected</span>
         <span className="text-[#707070] font-normal mx-1">·</span>
         <span>Rental = ${(parseFloat(rent)||0).toFixed(2)} × {billDays}/{daysInMonth}</span>
@@ -321,7 +321,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
             onClick={() => setDueOption(d)}
             className={`flex-1 py-2 rounded-lg border-[1.5px] text-[13px] font-semibold transition-colors ${
               dueOption === d
-                ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]'
+                ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]'
                 : 'border-[#E3E5EA] bg-white text-[#707070]'
             }`}
           >
@@ -356,13 +356,13 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
         {/* Header row */}
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1.5 text-[13px] font-bold text-[#1F1F1F]">
-            <Droplets size={14} className="text-[#1A7ACC]" />
+            <Droplets size={14} className="text-[#1E40AF]" />
             Water Meter
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-[#707070]">{lastRecLabel}</span>
             {waterAutoFilled ? (
-              <span className="text-[9px] font-bold text-[#D64045] bg-[#FFEDEA] px-1.5 py-0.5 rounded">
+              <span className="text-[9px] font-bold text-[#2563EB] bg-[#E8F0FF] px-1.5 py-0.5 rounded">
                 Auto-filled
               </span>
             ) : lastRec ? (
@@ -371,7 +371,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
                   setWaterPrev(String(lastRec.waterCurrent))
                   setWaterCurrent(String(lastRec.waterCurrent))
                 }}
-                className="text-[12px] font-semibold text-[#D64045] bg-[#FFEDEA] border border-[#D64045] px-2 py-1 rounded-lg leading-none"
+                className="text-[12px] font-semibold text-[#2563EB] bg-[#E8F0FF] border border-[#2563EB] px-2 py-1 rounded-lg leading-none"
               >
                 Use Last
               </button>
@@ -387,7 +387,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
               type="number"
               value={waterPrev}
               onChange={e => setWaterPrev(e.target.value)}
-              className="w-full px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none bg-white focus:border-[#D64045]"
+              className="w-full px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none bg-white focus:border-[#2563EB]"
             />
           </div>
           <div className="flex-1">
@@ -399,7 +399,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
               value={waterCurrent}
               placeholder="Enter reading"
               onChange={e => { setWaterCurrent(e.target.value); setErrors(p=>({...p,wc:''})) }}
-              className={`w-full px-2.5 py-1.5 rounded-lg border-[1.5px] text-[13px] font-bold text-right outline-none bg-white focus:border-[#D64045] ${errors.wc ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
+              className={`w-full px-2.5 py-1.5 rounded-lg border-[1.5px] text-[13px] font-bold text-right outline-none bg-white focus:border-[#2563EB] ${errors.wc ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
             />
           </div>
         </div>
@@ -417,7 +417,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
           </span>
           <div className="flex items-center gap-1.5">
             <AdjBadge show={Math.abs(parseFloat(waterRate) - wRateDefault) > 0.0001} />
-            <span className="text-[12px] font-bold text-[#D64045]">${waterAmt.toFixed(2)}</span>
+            <span className="text-[12px] font-bold text-[#2563EB]">${waterAmt.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -433,7 +433,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-[#707070]">{lastRecLabel}</span>
             {elecAutoFilled ? (
-              <span className="text-[9px] font-bold text-[#D64045] bg-[#FFEDEA] px-1.5 py-0.5 rounded">
+              <span className="text-[9px] font-bold text-[#2563EB] bg-[#E8F0FF] px-1.5 py-0.5 rounded">
                 Auto-filled
               </span>
             ) : lastRec ? (
@@ -442,7 +442,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
                   setElecPrev(String(lastRec.elecCurrent))
                   setElecCurrent(String(lastRec.elecCurrent))
                 }}
-                className="text-[12px] font-semibold text-[#D64045] bg-[#FFEDEA] border border-[#D64045] px-2 py-1 rounded-lg leading-none"
+                className="text-[12px] font-semibold text-[#2563EB] bg-[#E8F0FF] border border-[#2563EB] px-2 py-1 rounded-lg leading-none"
               >
                 Use Last
               </button>
@@ -458,7 +458,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
               type="number"
               value={elecPrev}
               onChange={e => setElecPrev(e.target.value)}
-              className="w-full px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none bg-white focus:border-[#D64045]"
+              className="w-full px-2.5 py-1.5 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] font-bold text-right outline-none bg-white focus:border-[#2563EB]"
             />
           </div>
           <div className="flex-1">
@@ -468,7 +468,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
               value={elecCurrent}
               placeholder="Enter reading"
               onChange={e => { setElecCurrent(e.target.value); setErrors(p=>({...p,ec:''})) }}
-              className={`w-full px-2.5 py-1.5 rounded-lg border-[1.5px] text-[13px] font-bold text-right outline-none bg-white focus:border-[#D64045] ${errors.ec ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
+              className={`w-full px-2.5 py-1.5 rounded-lg border-[1.5px] text-[13px] font-bold text-right outline-none bg-white focus:border-[#2563EB] ${errors.ec ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
             />
           </div>
         </div>
@@ -486,7 +486,7 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
           </span>
           <div className="flex items-center gap-1.5">
             <AdjBadge show={Math.abs(parseFloat(elecRate) - eRateDefault) > 0.0001} />
-            <span className="text-[12px] font-bold text-[#D64045]">${elecAmt.toFixed(2)}</span>
+            <span className="text-[12px] font-bold text-[#2563EB]">${elecAmt.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -524,17 +524,17 @@ export default function StartBillModal({ open, onClose, roomId, onSuccess }) {
       )}
 
       {/* ── Total ─────────────────────────────────────── */}
-      <div className="bg-[#FFEDEA] border border-[#FFEDEA] rounded-lg px-3.5 py-3 my-3">
+      <div className="bg-[#E8F0FF] border border-[#E8F0FF] rounded-lg px-3.5 py-3 my-3">
         <div className="flex items-center justify-between">
           <span className="text-[14px] font-bold text-[#1F1F1F]">Total</span>
-          <span className="text-[20px] font-bold text-[#D64045]">${grandTotal.toFixed(2)}</span>
+          <span className="text-[20px] font-bold text-[#2563EB]">${grandTotal.toFixed(2)}</span>
         </div>
       </div>
 
       {/* ── Submit ────────────────────────────────────── */}
       <button
         onClick={handleSubmit}
-        className="w-full py-3.5 bg-[#D64045] text-white text-[15px] font-semibold rounded-[10px] active:opacity-85 hover:bg-[#B7353A] transition-colors"
+        className="w-full py-3.5 bg-[#2563EB] text-white text-[15px] font-semibold rounded-[10px] active:opacity-85 hover:bg-[#1E4FD8] transition-colors"
       >
         Submit
       </button>

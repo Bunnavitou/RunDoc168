@@ -97,7 +97,7 @@ export default function ServiceFees() {
               <div key={svc.id}>
                 <div className="flex items-center justify-between px-4 py-3.5">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#EAF3FF] flex items-center justify-center text-[#1A5FA5]">
+                    <div className="w-10 h-10 rounded-xl bg-[#E8F0FF] flex items-center justify-center text-[#1E40AF]">
                       <ServiceIcon name={svc.icon} />
                     </div>
                     <div>
@@ -167,7 +167,7 @@ export default function ServiceFees() {
       {/* Floating add button */}
       <button
         onClick={() => setNewModal(true)}
-        className="fixed bottom-8 right-1/2 translate-x-[50px] w-14 h-14 rounded-full bg-[#D64045] text-white shadow-lg flex items-center justify-center active:opacity-80 z-40"
+        className="fixed bottom-8 right-1/2 translate-x-[50px] w-14 h-14 rounded-full bg-[#2563EB] text-white shadow-lg flex items-center justify-center active:opacity-80 z-40"
         style={{ maxWidth: 'calc(215px)' }}
       >
         <Plus size={24} />
@@ -180,7 +180,7 @@ export default function ServiceFees() {
         title={`Edit ${editModal.service?.name}`}
       >
         {editModal.service && !editModal.service.canDelete && (
-          <div className="bg-[#EAF3FF] rounded-xl p-3 mb-3 text-[12px] text-[#1A5FA5]">
+          <div className="bg-[#E8F0FF] rounded-xl p-3 mb-3 text-[12px] text-[#1E40AF]">
             Rate changes apply to new invoices only. Existing invoices are not affected.
           </div>
         )}
@@ -196,7 +196,7 @@ export default function ServiceFees() {
                     key={name}
                     onClick={() => setEditIcon(name)}
                     className={`w-10 h-10 rounded-xl flex items-center justify-center border-2 transition-colors ${
-                      editIcon === name ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]' : 'border-[#E3E5EA] bg-white text-[#707070]'
+                      editIcon === name ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]' : 'border-[#E3E5EA] bg-white text-[#707070]'
                     }`}
                   >
                     <Icon size={18} />
@@ -233,7 +233,7 @@ export default function ServiceFees() {
                   key={name}
                   onClick={() => setNewIcon(name)}
                   className={`w-10 h-10 rounded-xl flex items-center justify-center border-2 transition-colors ${
-                    newIcon === name ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]' : 'border-[#E3E5EA] bg-white text-[#707070]'
+                    newIcon === name ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]' : 'border-[#E3E5EA] bg-white text-[#707070]'
                   }`}
                 >
                   <Icon size={18} />

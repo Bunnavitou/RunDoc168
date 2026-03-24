@@ -109,7 +109,7 @@ export default function RoomDetail() {
             key={t}
             onClick={() => setTab(i)}
             className={`px-4 py-3 text-[13px] font-bold border-b-2 -mb-px whitespace-nowrap flex-shrink-0 transition-colors ${
-              tab === i ? 'text-[#D64045] border-[#D64045]' : 'text-[#707070] border-transparent'
+              tab === i ? 'text-[#2563EB] border-[#2563EB]' : 'text-[#707070] border-transparent'
             }`}
           >
             {t}
@@ -130,14 +130,18 @@ export default function RoomDetail() {
                   onClick={() => navigate(`/tenant/${tenant.id}`)}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-14 h-14 rounded-full bg-[#FFEDEA] flex items-center justify-center text-[#D64045] font-bold text-[24px] flex-shrink-0">
-                    {tenant.name[0]}
+                  <div className="w-14 h-14 rounded-full overflow-hidden bg-[#E8F0FF] flex items-center justify-center text-[#2563EB] font-bold text-[24px] flex-shrink-0 border border-[#E3E5EA]">
+                    {tenant.photo
+                      ? <img src={tenant.photo} alt="avatar" className="w-full h-full object-cover" />
+                      : tenant.name[0]
+                    }
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-[15px] font-bold text-[#1F1F1F] truncate">{tenant.name}</div>
                     <div className="text-[13px] text-[#707070] flex items-center gap-1 mt-0.5">
                       <Droplets size={12} /> {tenant.phone}
                     </div>
+                    <div className="text-[11px] text-[#2563EB] font-semibold mt-0.5">Tap to edit profile</div>
                   </div>
                   <ChevronRight size={18} className="text-[#B0B0B0]" />
                 </Card>
@@ -156,7 +160,7 @@ export default function RoomDetail() {
                       <div key={svc.serviceId}>
                         <div className="flex items-center justify-between px-4 py-3">
                           <div className="flex items-center gap-2.5">
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${svc.type === 'utility' ? 'bg-[#EAF3FF] text-[#1A5FA5]' : 'bg-[#F6F6F6] text-[#707070]'}`}>
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${svc.type === 'utility' ? 'bg-[#E8F0FF] text-[#1E40AF]' : 'bg-[#F6F6F6] text-[#707070]'}`}>
                               <ServiceIcon name={svc.icon} />
                             </div>
                             <div>
@@ -201,7 +205,7 @@ export default function RoomDetail() {
                               onChange={e => setEditVal(e.target.value)}
                               autoFocus
                             />
-                            <button onClick={saveEdit} className="text-[#D64045]"><Check size={14} /></button>
+                            <button onClick={saveEdit} className="text-[#2563EB]"><Check size={14} /></button>
                             <button onClick={() => setEditField(null)} className="text-[#707070]"><X size={14} /></button>
                           </div>
                         ) : (
@@ -249,11 +253,11 @@ export default function RoomDetail() {
                     const maxVal = Math.max(...recent.map(r => r[key]), 1)
                     return (
                       <div key={label} className="flex-1">
-                        <div className="flex items-end gap-1 h-11 bg-[#FFEDEA] rounded-lg p-1.5">
+                        <div className="flex items-end gap-1 h-11 bg-[#E8F0FF] rounded-lg p-1.5">
                           {recent.map((r, i) => (
                             <div
                               key={i}
-                              className="flex-1 bg-[#D64045] rounded-sm opacity-70"
+                              className="flex-1 bg-[#2563EB] rounded-sm opacity-70"
                               style={{ height: `${Math.max(10, (r[key] / maxVal) * 100)}%` }}
                             />
                           ))}
@@ -296,8 +300,8 @@ export default function RoomDetail() {
                       {/* Water */}
                       <div className="flex items-center justify-between px-4 py-2.5">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-lg bg-[#EAF3FF] flex items-center justify-center">
-                            <Droplets size={14} className="text-[#1A5FA5]" />
+                          <div className="w-8 h-8 rounded-lg bg-[#E8F0FF] flex items-center justify-center">
+                            <Droplets size={14} className="text-[#1E40AF]" />
                           </div>
                           <span className="text-[13px] font-bold">Water</span>
                         </div>
@@ -311,9 +315,9 @@ export default function RoomDetail() {
                             <div className="text-[9px] text-[#707070]">Now</div>
                             <div className="text-[12px] font-bold">{reading.waterCurrent}</div>
                           </div>
-                          <div className="text-center bg-[#FFEDEA] rounded-lg px-2 py-1">
+                          <div className="text-center bg-[#E8F0FF] rounded-lg px-2 py-1">
                             <div className="text-[9px] text-[#707070]">Use</div>
-                            <div className="text-[12px] font-bold text-[#D64045]">+{waterUsage}</div>
+                            <div className="text-[12px] font-bold text-[#2563EB]">+{waterUsage}</div>
                           </div>
                         </div>
                       </div>
@@ -335,9 +339,9 @@ export default function RoomDetail() {
                             <div className="text-[9px] text-[#707070]">Now</div>
                             <div className="text-[12px] font-bold">{reading.elecCurrent}</div>
                           </div>
-                          <div className="text-center bg-[#FFEDEA] rounded-lg px-2 py-1">
+                          <div className="text-center bg-[#E8F0FF] rounded-lg px-2 py-1">
                             <div className="text-[9px] text-[#707070]">Use</div>
-                            <div className="text-[12px] font-bold text-[#D64045]">+{elecUsage}</div>
+                            <div className="text-[12px] font-bold text-[#2563EB]">+{elecUsage}</div>
                           </div>
                         </div>
                       </div>
@@ -356,8 +360,8 @@ export default function RoomDetail() {
             {occupied && (
               <>
                 <SectionLabel>Current Period</SectionLabel>
-                <Card className="bg-[#FFEDEA] border-[#D64045] border-[1.5px]">
-                  <div className="flex items-center gap-1.5 text-[12px] text-[#D64045] font-semibold mb-1">
+                <Card className="bg-[#E8F0FF] border-[#2563EB] border-[1.5px]">
+                  <div className="flex items-center gap-1.5 text-[12px] text-[#2563EB] font-semibold mb-1">
                     <span>Mar 2026 · Day {dayCounter}/{daysInMonth}</span>
                   </div>
                   <div className="text-[12px] text-[#707070] mb-3">
@@ -378,7 +382,7 @@ export default function RoomDetail() {
                   key={t.key}
                   onClick={() => setBillFilter(t.key)}
                   className={`flex-1 py-2.5 text-center text-[11px] font-bold border-b-2 -mb-px transition-colors min-w-[60px] ${
-                    billFilter === t.key ? 'text-[#D64045] border-[#D64045]' : 'text-[#707070] border-transparent'
+                    billFilter === t.key ? 'text-[#2563EB] border-[#2563EB]' : 'text-[#707070] border-transparent'
                   }`}
                 >
                   <div>{t.label}</div>

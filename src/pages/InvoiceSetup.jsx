@@ -9,7 +9,7 @@ function Toggle({ value, onChange }) {
   return (
     <button
       onClick={() => onChange(!value)}
-      className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 ${value ? 'bg-[#D64045]' : 'bg-[#D1D5DB]'}`}
+      className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 ${value ? 'bg-[#2563EB]' : 'bg-[#D1D5DB]'}`}
     >
       <span
         className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${value ? 'translate-x-5' : 'translate-x-0'}`}
@@ -51,7 +51,7 @@ function Field({ label, value, onChange, placeholder, type = 'text', textarea = 
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] text-[#1F1F1F] outline-none resize-none focus:border-[#D64045] bg-white"
+          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] text-[#1F1F1F] outline-none resize-none focus:border-[#2563EB] bg-white"
         />
       ) : (
         <input
@@ -59,7 +59,7 @@ function Field({ label, value, onChange, placeholder, type = 'text', textarea = 
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] text-[#1F1F1F] outline-none focus:border-[#D64045] bg-white"
+          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-[#E3E5EA] text-[13px] text-[#1F1F1F] outline-none focus:border-[#2563EB] bg-white"
         />
       )}
     </div>
@@ -187,8 +187,8 @@ function PreviewModal({ open, onClose, settings, exchangeRate }) {
                   {header.profileImage ? (
                     <img src={header.profileImage} alt="logo" className="w-14 h-14 rounded-full object-cover flex-shrink-0 border border-[#E3E5EA]" />
                   ) : (
-                    <div className="w-14 h-14 rounded-full bg-[#FFEDEA] flex items-center justify-center flex-shrink-0">
-                      <FileText size={22} className="text-[#D64045]" />
+                    <div className="w-14 h-14 rounded-full bg-[#E8F0FF] flex items-center justify-center flex-shrink-0">
+                      <FileText size={22} className="text-[#2563EB]" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
@@ -220,7 +220,7 @@ function PreviewModal({ open, onClose, settings, exchangeRate }) {
                 </div>
                 <div className="text-right">
                   <div className="text-[11px] text-[#707070]">Due Date</div>
-                  <div className="text-[13px] font-bold text-[#D64045]">{fmtDate(inv.dueDate)}</div>
+                  <div className="text-[13px] font-bold text-[#2563EB]">{fmtDate(inv.dueDate)}</div>
                 </div>
               </div>
 
@@ -290,10 +290,10 @@ function PreviewModal({ open, onClose, settings, exchangeRate }) {
                 </div>
               </div>
 
-              <div className="bg-[#FFEDEA] rounded-xl px-4 py-3 mt-3">
+              <div className="bg-[#E8F0FF] rounded-xl px-4 py-3 mt-3">
                 <div className="flex justify-between items-center">
                   <span className="text-[14px] font-bold text-[#1F1F1F]">Total Due</span>
-                  <span className="text-[17px] font-bold text-[#D64045]">{formatUSD(inv.total)}</span>
+                  <span className="text-[17px] font-bold text-[#2563EB]">{formatUSD(inv.total)}</span>
                 </div>
                 {body.enabled && (
                   <div className="text-[10px] text-[#707070] text-right mt-0.5">
@@ -356,7 +356,7 @@ export default function InvoiceSetup() {
         rightSlot={
           <button
             onClick={() => setPreviewOpen(true)}
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-[#D64045]"
+            className="flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB]"
           >
             <Eye size={16} /> Preview
           </button>
@@ -368,8 +368,8 @@ export default function InvoiceSetup() {
         {/* ── Invoice Header ── */}
         <SectionCard
           icon={FileText}
-          iconBg="bg-[#EAF3FF]"
-          iconColor="text-[#1A5FA5]"
+          iconBg="bg-[#E8F0FF]"
+          iconColor="text-[#1E40AF]"
           title="Invoice Header"
           enabled={header.enabled}
           onToggle={v => h({ enabled: v })}
@@ -406,7 +406,7 @@ export default function InvoiceSetup() {
                   onClick={() => b({ invoiceNoDigits: d })}
                   className={`flex-1 py-2 rounded-lg border-[1.5px] text-[13px] font-semibold transition-colors ${
                     body.invoiceNoDigits === d
-                      ? 'border-[#D64045] bg-[#FFEDEA] text-[#D64045]'
+                      ? 'border-[#2563EB] bg-[#E8F0FF] text-[#2563EB]'
                       : 'border-[#E3E5EA] bg-white text-[#707070]'
                   }`}
                 >

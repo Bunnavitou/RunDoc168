@@ -7,7 +7,7 @@ export default function Badge({ variant = 'grey', children, className = '' }) {
     green:  'bg-[#E8F6EF] text-[#1F6F4E]',
     amber:  'bg-[#FFF3DF] text-[#8A6408]',
     red:    'bg-[#FFEDEA] text-[#B12A1B]',
-    blue:   'bg-[#EAF3FF] text-[#1A5FA5]',
+    blue:   'bg-[#E8F0FF] text-[#1E40AF]',
     grey:   'bg-[#F6F6F6] text-[#707070]',
     purple: 'bg-[#EDE9FE] text-[#5B21B6]',
   }

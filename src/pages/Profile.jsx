@@ -5,8 +5,8 @@ import { Camera, Eye, EyeOff, Check } from 'lucide-react'
 
 const ROLE_LABEL = { owner: 'Owner', manager: 'Manager', staff: 'Staff', viewer: 'Viewer' }
 const ROLE_COLOR = {
-  owner:   'bg-[#FFEDEA] text-[#D64045]',
-  manager: 'bg-[#EAF3FF] text-[#1A5FA5]',
+  owner:   'bg-[#E8F0FF] text-[#2563EB]',
+  manager: 'bg-[#E8F0FF] text-[#1E40AF]',
   staff:   'bg-[#E8F6EF] text-[#1F6F4E]',
   viewer:  'bg-[#F6F6F6] text-[#707070]',
 }
@@ -24,7 +24,7 @@ function Field({ label, value, onChange, placeholder, type = 'text', readOnly = 
         className={`w-full px-4 py-3 rounded-xl border-[1.5px] text-[14px] outline-none transition-colors ${
           readOnly
             ? 'border-[#E3E5EA] bg-[#F6F6F6] text-[#707070] cursor-default'
-            : 'border-[#E3E5EA] bg-white text-[#1F1F1F] focus:border-[#D64045]'
+            : 'border-[#E3E5EA] bg-white text-[#1F1F1F] focus:border-[#2563EB]'
         }`}
       />
     </div>
@@ -42,7 +42,7 @@ function PasswordField({ label, value, onChange, placeholder, error }) {
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder}
-          className={`w-full px-4 py-3 pr-12 rounded-xl border-[1.5px] text-[14px] outline-none bg-white transition-colors focus:border-[#D64045] ${error ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
+          className={`w-full px-4 py-3 pr-12 rounded-xl border-[1.5px] text-[14px] outline-none bg-white transition-colors focus:border-[#2563EB] ${error ? 'border-[#B12A1B]' : 'border-[#E3E5EA]'}`}
         />
         <button type="button" onClick={() => setShow(v => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#B0B0B0]">
           {show ? <EyeOff size={17} /> : <Eye size={17} />}
@@ -141,18 +141,18 @@ export default function Profile() {
         {/* ── Avatar ── */}
         <div className="flex flex-col items-center py-4">
           <div className="relative">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#E3E5EA] bg-[#FFEDEA] flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#E3E5EA] bg-[#E8F0FF] flex items-center justify-center">
               {avatar ? (
                 <img src={avatar} alt="avatar" className="w-full h-full object-cover" />
               ) : (
-                <span className="text-[36px] font-bold text-[#D64045]">
+                <span className="text-[36px] font-bold text-[#2563EB]">
                   {authUser.name?.[0]?.toUpperCase() || '?'}
                 </span>
               )}
             </div>
             <button
               onClick={() => fileRef.current?.click()}
-              className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#D64045] text-white flex items-center justify-center shadow border-2 border-white"
+              className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow border-2 border-white"
             >
               <Camera size={14} />
             </button>
@@ -192,7 +192,7 @@ export default function Profile() {
           <button
             onClick={handleSaveProfile}
             disabled={!name.trim()}
-            className="w-full py-3 rounded-xl bg-[#D64045] text-white text-[14px] font-semibold active:opacity-80 disabled:opacity-40 transition-opacity mt-1"
+            className="w-full py-3 rounded-xl bg-[#2563EB] text-white text-[14px] font-semibold active:opacity-80 disabled:opacity-40 transition-opacity mt-1"
           >
             Save Profile
           </button>
@@ -235,7 +235,7 @@ export default function Profile() {
         )}
 
         {isTelegram && (
-          <div className="bg-[#EAF3FF] rounded-xl px-4 py-3 text-[12px] text-[#1A5FA5]">
+          <div className="bg-[#E8F0FF] rounded-xl px-4 py-3 text-[12px] text-[#1E40AF]">
             Password change is not available for Telegram login accounts.
           </div>
         )}

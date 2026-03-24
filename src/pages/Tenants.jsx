@@ -20,7 +20,7 @@ export default function Tenants() {
     )
   }, [tenants, search])
 
-  const avatarColors = ['bg-[#FFEDEA] text-[#D64045]', 'bg-[#EDE9FE] text-[#5B21B6]', 'bg-[#E8F6EF] text-[#1F6F4E]', 'bg-[#EAF3FF] text-[#1A5FA5]']
+  const avatarColors = ['bg-[#E8F0FF] text-[#2563EB]', 'bg-[#EDE9FE] text-[#5B21B6]', 'bg-[#E8F6EF] text-[#1F6F4E]', 'bg-[#E8F0FF] text-[#1E40AF]']
 
   return (
     <div>
@@ -49,8 +49,11 @@ export default function Tenants() {
                   className="flex items-center gap-3 px-4 py-3 cursor-pointer active:opacity-80"
                   onClick={() => navigate(`/tenant/${tenant.id}`)}
                 >
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center font-bold text-[18px] flex-shrink-0 ${avatarColors[i % avatarColors.length]}`}>
-                    {tenant.name[0]}
+                  <div className={`w-11 h-11 rounded-full overflow-hidden flex items-center justify-center font-bold text-[18px] flex-shrink-0 border border-[#E3E5EA] ${tenant.photo ? '' : avatarColors[i % avatarColors.length]}`}>
+                    {tenant.photo
+                      ? <img src={tenant.photo} alt="avatar" className="w-full h-full object-cover" />
+                      : tenant.name[0]
+                    }
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-[14px] font-bold text-[#1F1F1F] truncate">{tenant.name}</div>

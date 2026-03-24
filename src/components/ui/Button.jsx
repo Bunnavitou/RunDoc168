@@ -20,8 +20,8 @@ export default function Button({
   }
 
   const variants = {
-    primary: 'bg-[#D64045] text-white hover:bg-[#B7353A] disabled:bg-[#B0B0B0]',
-    outline: 'bg-white text-[#D64045] border border-[#D64045] hover:bg-[#FFEDEA]',
+    primary: 'bg-[#2563EB] text-white hover:bg-[#1E4FD8] disabled:bg-[#B0B0B0]',
+    outline: 'bg-white text-[#2563EB] border border-[#2563EB] hover:bg-[#E8F0FF]',
     danger:  'bg-[#FFEDEA] text-[#B12A1B]',
     ghost:   'bg-transparent text-[#707070]',
   }

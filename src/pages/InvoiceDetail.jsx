@@ -165,10 +165,10 @@ export default function InvoiceDetail() {
             <span className="text-[12px] text-[#707070]">{formatUSD(inv.securityDeposit)}</span>
           </div>
 
-          <div className="bg-[#FFEDEA] -mx-4 px-4 py-3 rounded-b-xl mt-2">
+          <div className="bg-[#E8F0FF] -mx-4 px-4 py-3 rounded-b-xl mt-2">
             <div className="flex justify-between items-center">
               <span className="text-[15px] font-bold text-[#1F1F1F]">Total Due</span>
-              <span className="text-[18px] font-bold text-[#D64045]">{formatUSD(inv.total)}</span>
+              <span className="text-[18px] font-bold text-[#2563EB]">{formatUSD(inv.total)}</span>
             </div>
             <div className="text-[11px] text-[#707070] mt-0.5 text-right">
               ≈ {formatKHR(inv.total, inv.exchangeRate || exchangeRate)} @ {inv.exchangeRate || exchangeRate} ៛/$

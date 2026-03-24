@@ -110,7 +110,7 @@ export default function AddTenantModal({ open, onClose, roomId, roomName }) {
             <span className="text-[13px] font-semibold">Existing tenant found</span>
           </div>
           <div className="bg-[#F6F6F6] rounded-xl p-4 mb-4 flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-[#FFEDEA] flex items-center justify-center text-[#D64045] font-bold text-[18px]">
+            <div className="w-12 h-12 rounded-full bg-[#E8F0FF] flex items-center justify-center text-[#2563EB] font-bold text-[18px]">
               {foundTenant.name[0]}
             </div>
             <div>
@@ -128,7 +128,7 @@ export default function AddTenantModal({ open, onClose, roomId, roomName }) {
       {/* Step: New tenant */}
       {step === 'new' && (
         <div>
-          <div className="flex items-center gap-2 text-[#1A5FA5] bg-[#EAF3FF] rounded-xl p-3 mb-4">
+          <div className="flex items-center gap-2 text-[#1E40AF] bg-[#E8F0FF] rounded-xl p-3 mb-4">
             <UserPlus size={18} />
             <span className="text-[13px] font-semibold">No match found — create new tenant</span>
           </div>

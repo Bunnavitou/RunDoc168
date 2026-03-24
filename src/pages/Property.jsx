@@ -50,7 +50,7 @@ export default function Property() {
         rightSlot={
           <button
             onClick={() => setBuildingModal({ open: true, existing: null })}
-            className="flex items-center gap-1 text-[13px] font-semibold text-[#D64045]"
+            className="flex items-center gap-1 text-[13px] font-semibold text-[#2563EB]"
           >
             <Plus size={16} /> Building
           </button>
@@ -67,7 +67,7 @@ export default function Property() {
                   key={b.id}
                   onClick={() => setActiveBuilding(b.id)}
                   className={`px-4 py-3 text-[13px] font-bold border-b-2 -mb-px whitespace-nowrap flex-shrink-0 transition-colors ${
-                    activeBuilding === b.id ? 'text-[#D64045] border-[#D64045]' : 'text-[#707070] border-transparent'
+                    activeBuilding === b.id ? 'text-[#2563EB] border-[#2563EB]' : 'text-[#707070] border-transparent'
                   }`}
                 >
                   {b.name}
@@ -120,7 +120,7 @@ export default function Property() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => setRoomModal({ open: true, existing: null, floorId: floor.id, buildingId: activeBuilding })}
-                            className="flex items-center gap-1 text-[12px] font-semibold text-[#D64045]"
+                            className="flex items-center gap-1 text-[12px] font-semibold text-[#2563EB]"
                           >
                             <Plus size={13} /> Room
                           </button>
