@@ -1,128 +1,106 @@
 import { useNavigate } from 'react-router-dom'
-import { Building2, Settings, FileText, Languages, Users, LogOut, ChevronRight, ScrollText } from 'lucide-react'
+import { User, Users, ScrollText, LogOut, ChevronRight, Settings, ClipboardList } from 'lucide-react'
 import { useStore } from '../store'
-
-const LANGUAGES = [
-  { code: 'en', label: 'English', native: 'English' },
-  { code: 'km', label: 'Khmer',   native: 'ភាសាខ្មែរ' },
-]
-
-const ROLE_LABEL = { owner: 'Owner', manager: 'Manager', staff: 'Staff', viewer: 'Viewer' }
+import { translations } from '../lib/i18n'
 
 export default function More() {
   const navigate = useNavigate()
-  const { language, setLanguage, authUser, logout } = useStore()
+  const { authUser, logout, language, setLanguage } = useStore()
+  const t = (key) => translations[language]?.[key] ?? translations.en[key] ?? key
+
+  const ROLE_LABEL = { owner: 'Owner', manager: 'Manager', staff: 'Staff', viewer: 'Viewer' }
 
   const MENU = [
     {
-      icon: Building2,
-      iconBg: 'bg-[#E8F0FF]',
-      iconColor: 'text-[#1E40AF]',
-      label: 'Property Management',
-      sub: 'Manage buildings, floors & rooms',
-      action: () => navigate('/property'),
-    },
-    {
-      icon: Settings,
-      iconBg: 'bg-[#E8F6EF]',
-      iconColor: 'text-[#1F6F4E]',
-      label: 'Service Fees',
-      sub: 'Manage master service catalog',
-      action: () => navigate('/services'),
-    },
-    {
-      icon: FileText,
-      iconBg: 'bg-[#E8F0FF]',
-      iconColor: 'text-[#1E40AF]',
-      label: 'Invoice Setup',
-      sub: 'Configure header, body, footer & QR',
-      action: () => navigate('/invoice-setup'),
+      icon: ClipboardList,
+      iconBg: 'bg-[#FFF0F6]',
+      iconColor: 'text-[#DB2777]',
+      label: t('typeOfRequest'),
+      sub: t('typeOfRequestSub'),
+      action: () => navigate('/approval-types'),
     },
     {
       icon: Users,
-      iconBg: 'bg-[#F3EEFF]',
-      iconColor: 'text-[#6B3FA0]',
-      label: 'Sub Users',
-      sub: 'Manage staff and viewer accounts',
+      iconBg: 'bg-[#E8F6EF]',
+      iconColor: 'text-[#1F6F4E]',
+      label: t('subUsers'),
+      sub: t('subUsersSub'),
       action: () => navigate('/sub-users'),
+    },
+    {
+      icon: Settings,
+      iconBg: 'bg-[#FFF3E8]',
+      iconColor: 'text-[#8A6408]',
+      label: t('settings'),
+      sub: t('settingsSub'),
+      action: () => navigate('/settings'),
     },
     {
       icon: ScrollText,
       iconBg: 'bg-[#F6F6F6]',
       iconColor: 'text-[#707070]',
-      label: 'Terms & Conditions',
-      sub: 'Usage policy and legal information',
+      label: t('termsAndConditions'),
+      sub: t('termsAndConditionsSub'),
       action: () => navigate('/terms'),
     },
   ]
 
   return (
     <div>
-      <div className="bg-white px-4 pt-4 pb-3 border-b border-[#E3E5EA]">
-        <h1 className="text-[22px] font-bold text-[#1F1F1F]">More</h1>
+      {/* Header with language toggle */}
+      <div className="bg-white px-4 pt-4 pb-3 border-b border-[#E3E5EA] flex items-center justify-between">
+        <h1 className="text-[22px] font-bold text-[#1F1F1F]">{t('more')}</h1>
+
+        {/* Language toggle */}
+        <div className="flex items-center bg-[#F0F2F5] rounded-xl p-0.5">
+          {[
+            { code: 'en', label: 'EN' },
+            { code: 'km', label: 'ខ្មែរ' },
+          ].map(({ code, label }) => (
+            <button
+              key={code}
+              onClick={() => setLanguage(code)}
+              className={`px-3 py-1.5 rounded-[10px] text-[12px] font-bold transition-all ${
+                language === code
+                  ? 'bg-white text-[#1E3A8A] shadow-sm'
+                  : 'text-[#707070]'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="p-4 space-y-2.5">
 
-        {/* Current user card — tap to edit profile */}
+        {/* Profile card */}
         {authUser && (
           <button
             onClick={() => navigate('/profile')}
-            className="w-full bg-white rounded-xl border border-[#E3E5EA] px-4 py-3.5 flex items-center gap-3 active:opacity-80 text-left"
+            className="w-full bg-gradient-to-r from-[#1E3A8A] to-[#1A3278] rounded-xl px-4 py-4 flex items-center gap-4 active:opacity-90 text-left shadow-sm"
           >
-            <div className="w-11 h-11 rounded-full bg-[#E8F0FF] flex items-center justify-center text-[#2563EB] font-bold text-[18px] flex-shrink-0 overflow-hidden flex-shrink-0">
+            {/* Avatar */}
+            <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-white font-bold text-[22px] flex-shrink-0 overflow-hidden border-2 border-white/30">
               {authUser.profileImage
                 ? <img src={authUser.profileImage} alt="avatar" className="w-full h-full object-cover" />
                 : authUser.name?.[0]?.toUpperCase() || '?'
               }
             </div>
+            {/* Info */}
             <div className="flex-1 min-w-0">
-              <div className="text-[14px] font-bold text-[#1F1F1F] truncate">{authUser.name}</div>
-              <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-[11px] text-[#707070]">{ROLE_LABEL[authUser.role] || authUser.role}</span>
+              <div className="text-[16px] font-bold text-white truncate">{authUser.name}</div>
+              <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                <span className="text-[11px] text-white/70 font-medium">{ROLE_LABEL[authUser.role] || authUser.role}</span>
                 {authUser.via === 'telegram' && (
-                  <span className="text-[10px] font-bold text-[#2AABEE] bg-[#E8F6FF] px-1.5 py-0.5 rounded">Telegram</span>
+                  <span className="text-[10px] font-bold text-[#2AABEE] bg-white/90 px-1.5 py-0.5 rounded">Telegram</span>
                 )}
               </div>
             </div>
-            <ChevronRight size={16} className="text-[#B0B0B0] flex-shrink-0" />
           </button>
         )}
 
-        {/* Language selector */}
-        <div className="bg-white rounded-xl border border-[#E3E5EA] px-4 py-3.5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-[#F3EEFF] flex items-center justify-center flex-shrink-0">
-              <Languages size={20} className="text-[#6B3FA0]" />
-            </div>
-            <div>
-              <div className="text-[14px] font-bold text-[#1F1F1F]">Language</div>
-              <div className="text-[12px] text-[#707070]">Display language for the app</div>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            {LANGUAGES.map(lang => (
-              <button
-                key={lang.code}
-                onClick={() => setLanguage(lang.code)}
-                className={`flex-1 py-2.5 rounded-xl border-[1.5px] text-center transition-colors ${
-                  language === lang.code
-                    ? 'border-[#2563EB] bg-[#E8F0FF]'
-                    : 'border-[#E3E5EA] bg-[#F6F6F6]'
-                }`}
-              >
-                <div className={`text-[13px] font-bold ${language === lang.code ? 'text-[#2563EB]' : 'text-[#1F1F1F]'}`}>
-                  {lang.native}
-                </div>
-                <div className={`text-[11px] mt-0.5 ${language === lang.code ? 'text-[#2563EB]' : 'text-[#707070]'}`}>
-                  {lang.label}
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Nav menu items */}
+        {/* Menu items */}
         {MENU.map(item => (
           <button
             key={item.label}
@@ -150,7 +128,7 @@ export default function More() {
           <div className="w-10 h-10 rounded-xl bg-[#FFEDEA] flex items-center justify-center flex-shrink-0">
             <LogOut size={20} className="text-[#B12A1B]" />
           </div>
-          <span className="text-[14px] font-bold text-[#B12A1B]">Log Out</span>
+          <span className="text-[14px] font-bold text-[#B12A1B]">{t('logOut')}</span>
         </button>
 
       </div>

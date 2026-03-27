@@ -51,9 +51,9 @@ export default function TermsAndConditions() {
       <div className="page-content scrollbar-hide p-4 space-y-3" style={{ paddingBottom: '32px' }}>
 
         {/* Intro banner */}
-        <div className="bg-[#E8F0FF] rounded-xl px-4 py-3">
-          <div className="text-[12px] font-bold text-[#1E40AF] mb-0.5">Last updated: March 2026</div>
-          <div className="text-[12px] text-[#1E40AF]">
+        <div className="bg-[#EAF0FF] rounded-xl px-4 py-3">
+          <div className="text-[12px] font-bold text-[#1A3278] mb-0.5">Last updated: March 2026</div>
+          <div className="text-[12px] text-[#1A3278]">
             Please read these terms carefully before using PBMS.
           </div>
         </div>

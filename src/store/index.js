@@ -1,5 +1,13 @@
 import { create } from 'zustand'
-import { resolveInvoiceStatus } from '../lib/billing'
+import { BUDGET_TREE, MOCK_REQUESTS, APPROVAL_TYPES } from '../lib/mockData'
+
+function resolveInvoiceStatus(status, dueDate) {
+  if (status === 'paid' || status === 'cancelled') return status
+  const today = new Date(); today.setHours(0, 0, 0, 0)
+  const due = new Date(dueDate); due.setHours(0, 0, 0, 0)
+  if (today > due && status === 'progress') return 'overdue'
+  return status
+}
 
 // ─── Seed Data ───────────────────────────────────────────────────────────────
 
@@ -355,10 +363,15 @@ export const useStore = create((set, get) => ({
   invoices:       [...INVOICES_INIT],
   exchangeRate:   4000,
   language:       'en',
+  currency:       'KHR',
+  budgetTree:     JSON.parse(JSON.stringify(BUDGET_TREE)),
+  requests:       [...MOCK_REQUESTS],
+  approvalTypes:  [...APPROVAL_TYPES],
   isLoggedIn:     false,
   authUser:       null,
   ownerProfile:   { name: OWNER_ACCOUNT.name, phone: OWNER_ACCOUNT.phone, profileImage: null, password: OWNER_ACCOUNT.password },
   subUsers:       [...SUB_USERS_INIT],
+  departments:    ['Management', 'Finance', 'Operations', 'IT', 'Marketing', 'HR', 'Sales'],
   notifications:  [...NOTIFICATIONS_INIT],
   invoiceSettings: {
     header: {
@@ -751,6 +764,97 @@ export const useStore = create((set, get) => ({
     set({ language: lang })
   },
 
+  setCurrency(currency) {
+    set({ currency })
+  },
+
+  // ── Budget Tree ──
+
+  importBudgetYear(year, nodes) {
+    // Replace all L1 nodes for this year with the new nodes, keep other years intact
+    set(s => ({
+      budgetTree: [
+        ...s.budgetTree.filter(n => (n.year || 2026) !== year),
+        ...nodes,
+      ]
+    }))
+  },
+
+  addBudgetL1({ name, code }) {
+    set(s => ({ budgetTree: [...s.budgetTree, { code, name, children: [] }] }))
+  },
+
+  addBudgetL2(l1Code, { name, code }) {
+    set(s => ({
+      budgetTree: s.budgetTree.map(l1 =>
+        l1.code === l1Code
+          ? { ...l1, children: [...l1.children, { code, name, children: [] }] }
+          : l1
+      ),
+    }))
+  },
+
+  addBudgetL3(l1Code, l2Code, { name, code, budgeted }) {
+    set(s => ({
+      budgetTree: s.budgetTree.map(l1 =>
+        l1.code !== l1Code ? l1 : {
+          ...l1,
+          children: l1.children.map(l2 =>
+            l2.code !== l2Code ? l2 : {
+              ...l2,
+              children: [...l2.children, { code, name, budgeted, spent: 0 }],
+            }
+          ),
+        }
+      ),
+    }))
+  },
+
+  deductBudgetSpent(l3Code, amount) {
+    set(s => ({
+      budgetTree: s.budgetTree.map(l1 => ({
+        ...l1,
+        children: l1.children.map(l2 => ({
+          ...l2,
+          children: l2.children.map(l3 =>
+            l3.code === l3Code
+              ? { ...l3, spent: Math.min(l3.spent + amount, l3.budgeted) }
+              : l3
+          ),
+        })),
+      })),
+    }))
+  },
+
+  // ── Requests ──
+
+  submitRequest(req) {
+    set(s => ({ requests: [req, ...s.requests] }))
+  },
+
+  approveRequest(id) {
+    const { requests, deductBudgetSpent } = get()
+    const req = requests.find(r => r.id === id)
+    if (!req) return
+    // Deduct budget for each line item
+    if (req.items) {
+      req.items.forEach(item => {
+        if (item.budgetCode && item.amount) {
+          deductBudgetSpent(item.budgetCode, item.amount)
+        }
+      })
+    }
+    set(s => ({
+      requests: s.requests.map(r => r.id === id ? { ...r, status: 'approved' } : r),
+    }))
+  },
+
+  rejectRequest(id) {
+    set(s => ({
+      requests: s.requests.map(r => r.id === id ? { ...r, status: 'rejected' } : r),
+    }))
+  },
+
   // ── Sub Users ──
 
   // ── Auth ──
@@ -812,6 +916,35 @@ export const useStore = create((set, get) => ({
     return { success: true }
   },
 
+  changePassword(currentPassword, newPassword) {
+    const { authUser, ownerProfile, subUsers } = get()
+    if (authUser?.role === 'owner') {
+      if (ownerProfile.password !== currentPassword) return { success: false, error: 'Current password is incorrect.' }
+      set(s => ({ ownerProfile: { ...s.ownerProfile, password: newPassword } }))
+    } else {
+      const user = subUsers.find(u => u.id === authUser?.subUserId)
+      if (!user || user.password !== currentPassword) return { success: false, error: 'Current password is incorrect.' }
+      set(s => ({ subUsers: s.subUsers.map(u => u.id === user.id ? { ...u, password: newPassword } : u) }))
+    }
+    return { success: true }
+  },
+
+  addApprovalType(data) {
+    const type = { id: 'ap' + uid(), ...data }
+    set(s => ({ approvalTypes: [...s.approvalTypes, type] }))
+    return type
+  },
+
+  updateApprovalType(id, data) {
+    set(s => ({
+      approvalTypes: s.approvalTypes.map(t => t.id === id ? { ...t, ...data } : t)
+    }))
+  },
+
+  deleteApprovalType(id) {
+    set(s => ({ approvalTypes: s.approvalTypes.filter(t => t.id !== id) }))
+  },
+
   addSubUser(data) {
     const user = { id: 'su' + uid(), status: 'active', ...data }
     set(s => ({ subUsers: [...s.subUsers, user] }))
@@ -831,6 +964,18 @@ export const useStore = create((set, get) => ({
 
   deleteSubUser(id) {
     set(s => ({ subUsers: s.subUsers.filter(u => u.id !== id) }))
+  },
+
+  addDepartment(name) {
+    set(s => ({ departments: [...s.departments, name.trim()] }))
+  },
+
+  updateDepartment(oldName, newName) {
+    set(s => ({ departments: s.departments.map(d => d === oldName ? newName.trim() : d) }))
+  },
+
+  deleteDepartment(name) {
+    set(s => ({ departments: s.departments.filter(d => d !== name) }))
   },
 
   // ── Notifications ──

@@ -14,7 +14,7 @@ export function initTelegram() {
     tg.expand()
     // Set header color to match app theme
     if (tg.setHeaderColor) {
-      tg.setHeaderColor('#2563EB')
+      tg.setHeaderColor('#1E3A8A')
     }
   }
 }

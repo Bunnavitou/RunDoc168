@@ -42,7 +42,7 @@ export default function Login() {
 
       {/* Logo / Brand */}
       <div className="flex flex-col items-center mb-10">
-        <div className="w-20 h-20 rounded-3xl bg-[#2563EB] flex items-center justify-center shadow-lg mb-4">
+        <div className="w-20 h-20 rounded-3xl bg-[#1E3A8A] flex items-center justify-center shadow-lg mb-4">
           <Building2 size={38} className="text-white" strokeWidth={1.8} />
         </div>
         <h1 className="text-[26px] font-bold text-[#1F1F1F] tracking-tight">PBMS</h1>
@@ -55,7 +55,7 @@ export default function Login() {
         <button
           onClick={handleTelegram}
           disabled={loading}
-          className="w-full flex items-center justify-center gap-3 py-3.5 rounded-2xl bg-[#2AABEE] text-white text-[15px] font-semibold shadow-sm active:opacity-80 disabled:opacity-60 transition-opacity"
+          className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl bg-[#2AABEE] text-white text-[15px] font-semibold shadow-sm active:opacity-80 disabled:opacity-60 transition-opacity"
         >
           <TelegramIcon size={20} />
           {loading ? 'Connecting…' : 'Continue with Telegram'}
@@ -79,7 +79,7 @@ export default function Login() {
               onChange={e => { setPhone(e.target.value); setError('') }}
               placeholder="e.g. 099-000-0001"
               autoComplete="username"
-              className="w-full px-4 py-3 rounded-xl border-[1.5px] border-[#E3E5EA] text-[14px] text-[#1F1F1F] outline-none bg-white focus:border-[#2563EB] transition-colors"
+              className="w-full px-4 py-3 rounded-xl border-[1.5px] border-[#E3E5EA] text-[14px] text-[#1F1F1F] outline-none bg-white focus:border-[#1E3A8A] transition-colors"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function Login() {
                 onChange={e => { setPassword(e.target.value); setError('') }}
                 placeholder="Enter password"
                 autoComplete="current-password"
-                className="w-full px-4 py-3 pr-12 rounded-xl border-[1.5px] border-[#E3E5EA] text-[14px] text-[#1F1F1F] outline-none bg-white focus:border-[#2563EB] transition-colors"
+                className="w-full px-4 py-3 pr-12 rounded-xl border-[1.5px] border-[#E3E5EA] text-[14px] text-[#1F1F1F] outline-none bg-white focus:border-[#1E3A8A] transition-colors"
               />
               <button
                 type="button"
@@ -115,7 +115,7 @@ export default function Login() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3.5 rounded-2xl bg-[#2563EB] text-white text-[15px] font-semibold shadow-sm active:opacity-80 hover:bg-[#1E4FD8] transition-colors"
+            className="w-full py-3.5 rounded-xl bg-[#1E3A8A] text-white text-[15px] font-semibold shadow-sm active:opacity-80 hover:bg-[#1E4FD8] transition-colors"
           >
             Sign In
           </button>

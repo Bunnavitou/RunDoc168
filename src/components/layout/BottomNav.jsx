@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Users, Receipt, MoreHorizontal } from 'lucide-react'
+import { LayoutDashboard, FileText, CheckSquare, MoreHorizontal } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { to: '/',        label: 'Room',    Icon: Home          },
-  { to: '/tenants', label: 'Tenant',  Icon: Users         },
-  { to: '/billing', label: 'Billing', Icon: Receipt       },
-  { to: '/more',    label: 'More',    Icon: MoreHorizontal },
+  { to: '/',         label: 'Dashboard', Icon: LayoutDashboard },
+  { to: '/request',  label: 'Request',   Icon: FileText        },
+  { to: '/approval', label: 'Approval',  Icon: CheckSquare     },
+  { to: '/more',     label: 'More',      Icon: MoreHorizontal  },
 ]
 
 export default function BottomNav() {
@@ -18,7 +18,7 @@ export default function BottomNav() {
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-4 py-1.5 cursor-pointer ${isActive ? 'text-[#2563EB]' : 'text-[#707070]'}`
+              `flex flex-col items-center gap-0.5 px-4 py-1.5 cursor-pointer ${isActive ? 'text-[#1E3A8A]' : 'text-[#707070]'}`
             }
           >
             {({ isActive }) => (
