@@ -7,9 +7,9 @@
 :root {
   --bg: #F6F6F6;
   --w: #fff;
-  --pr: #2563EB;
-  --pr-hov: #1E4FD8;
-  --pl: #E8F0FF;
+  --pr: #1E3A8A;
+  --pr-hov: #1A3278;
+  --pl: #EAF0FF;
   --tx: #1F1F1F;
   --su: #707070;
   --bd: #E3E5EA;
@@ -19,10 +19,7 @@
   --am-bg: #FFF3DF;
   --gr: #1F6F4E;
   --gr-bg: #E8F6EF;
-  --info: #1E40AF;
-  --info-bg: #E8F0FF;
-  --brand-pressed: #1A43B8;
-  --accent: #EEF7F8;
+  --brand-pressed: #162B66;
   --dis: #B0B0B0;
 }
 
